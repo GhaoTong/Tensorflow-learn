@@ -1,0 +1,13 @@
+---- data_type Matches (12 in 0 files) ----
+convolutional in convolutional.py (E:\GitHub\tensorflow\models\tutorials\image\mnist) : def data_type():
+convolutional.main in convolutional.py (E:\GitHub\tensorflow\models\tutorials\image\mnist) :       data_type(),
+convolutional.main in convolutional.py (E:\GitHub\tensorflow\models\tutorials\image\mnist) :       data_type(),
+convolutional.main in convolutional.py (E:\GitHub\tensorflow\models\tutorials\image\mnist) :                           seed=SEED, dtype=data_type()))
+convolutional.main in convolutional.py (E:\GitHub\tensorflow\models\tutorials\image\mnist) :   conv1_biases = tf.Variable(tf.zeros([32], dtype=data_type()))
+convolutional.main in convolutional.py (E:\GitHub\tensorflow\models\tutorials\image\mnist) :       seed=SEED, dtype=data_type()))
+convolutional.main in convolutional.py (E:\GitHub\tensorflow\models\tutorials\image\mnist) :   conv2_biases = tf.Variable(tf.constant(0.1, shape=[64], dtype=data_type()))
+convolutional.main in convolutional.py (E:\GitHub\tensorflow\models\tutorials\image\mnist) :                           dtype=data_type()))
+convolutional.main in convolutional.py (E:\GitHub\tensorflow\models\tutorials\image\mnist) :   fc1_biases = tf.Variable(tf.constant(0.1, shape=[512], dtype=data_type()))
+convolutional.main in convolutional.py (E:\GitHub\tensorflow\models\tutorials\image\mnist) :                                                 dtype=data_type()))
+convolutional.main in convolutional.py (E:\GitHub\tensorflow\models\tutorials\image\mnist) :       0.1, shape=[NUM_LABELS], dtype=data_type()))
+convolutional.main in convolutional.py (E:\GitHub\tensorflow\models\tutorials\image\mnist) :   batch = tf.Variable(0, dtype=data_type())
