@@ -125,13 +125,13 @@ def run_benchmark():
         time_tensorflow_run(sess, grad, {keep_prob : 0.5},"Forward_backward")
 
 
-#run_benchmark()
+run_benchmark()
 
-img = Image.open('.\\tensorflow-vgg-master\\test_data\\puzzle.jpeg')
+#img = Image.open('.\\tensorflow-vgg-master\\test_data\\puzzle.jpeg')
 
-plt.figure("puzzle")
-plt.imshow(img)
-plt.show()
+#plt.figure("puzzle")
+#plt.imshow(img)
+#plt.show()
 
 
 
