@@ -64,11 +64,6 @@ def loss (logits, labels):
     return tf.add_n( tf.get_collection('losses'),name='total_loss' )
 
 loss = loss(logits,labele_holder)
-sess= tf.InteractiveSession()
-tf.global_variables_initializer().run()
-print(sess.run( labele_holder))
-
-
 train_op = tf.train.AdamOptimizer(1e-3).minimize(loss)
 top_k_op = tf.nn.in_top_k(logits,labele_holder,1)
 
