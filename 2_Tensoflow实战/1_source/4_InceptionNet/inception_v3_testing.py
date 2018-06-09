@@ -1,6 +1,6 @@
 import tensorflow as tf
-import inception_tensorflow.inception_v3
-import inception_tensorflow.inception_utils
+from inception_tensorflow import inception_utils
+from inception_tensorflow import inception_v3
 import time
 from datetime import datetime
 import math
@@ -37,8 +37,8 @@ def time_tensorflow_run(session, target, info_string):
 def main (_):
     height, width = 299, 299
     inputs = tf.random_uniform((FLAGS.batch_size, height, width, 3))
-    with inception_tensorflow.inception_v3.slim.arg_scope(inception_tensorflow.inception_utils.inception_arg_scope()):
-        logits, end_point = inception_tensorflow.inception_v3.inception_v3(inputs,is_training= False)
+    with inception_v3.slim.arg_scope(inception_utils.inception_arg_scope()):
+        logits, end_point = inception_v3.inception_v3(inputs,is_training= False)
 
 
     init = tf.global_variables_initializer()
