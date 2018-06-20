@@ -1,0 +1,4 @@
+embeddings {
+  tensor_name: "embeddings/Variable:0"
+  metadata_path: "E:\\git\\Tensorflow-learn\\2_Tensoflow\345\256\236\346\210\230\\1_source\\6_word2vec\\log\\metadata.tsv"
+}
