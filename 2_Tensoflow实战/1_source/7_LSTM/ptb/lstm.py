@@ -64,7 +64,7 @@ class PTBModel(object):
         logits = tf.matmul(output, softmax_w)+ softmax_b
         loss = tf.contrib.seq2seq.sequence_loss(
             [logits],
-            [input_.targets,
+            [tf.reshape( input_.targets,[-1])],
             tf.ones([self.batch_size, self.num_steps], dtype=data_type()),
             average_across_timesteps=False,
             average_across_batch=True)
