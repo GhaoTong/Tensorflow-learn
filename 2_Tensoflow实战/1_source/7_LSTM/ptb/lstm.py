@@ -62,7 +62,18 @@ class PTBModel(object):
         softmax_w = tf.get_variable("softmax_w",[size, vocab_size], dtype=tf.float32)
         softmax_b = tf.get_variable("softmax_b",[vocab_size], dtype=tf.float32)
         logits = tf.matmul(output, softmax_w)+ softmax_b
-        loss = tf.contrib.legacay_seq2seq.sequence_loss
+        loss = tf.contrib.seq2seq.sequence_loss(
+            [logits],
+            [input_.targets,
+            tf.ones([self.batch_size, self.num_steps], dtype=data_type()),
+            average_across_timesteps=False,
+            average_across_batch=True)
 
+        # Update the cost
+        self._cost = tf.reduce_sum(loss)
+        self._final_state = state
+
+        if not is_training:
+        return
 
 neverused = tf.placeholder(dtype= tf.int32, shape=[])
