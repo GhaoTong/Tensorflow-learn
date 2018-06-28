@@ -74,5 +74,16 @@ class PTBModel(object):
 
             if not is_training:
             return
+        self._lr = tf.Variable(0.0,trainable = False)
+        tvars = tf.trainable_variables()
+        grads, _ = tf.clip_by_global_norm(tf.gradients(cost, tvars),
+        config.max_grad_norm)
+        optmizer = tf.train.GradientDescentOptimizer(self._lr)
+        self._train_op = optmizer.apply_gradients(zip(grads,tvars),
+                    global_step= = tf.contrib.framework.get_or_creat_global_step())
+                    
+
+
+
 
 neverused = tf.placeholder(dtype= tf.int32, shape=[])
