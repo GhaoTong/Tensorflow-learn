@@ -76,6 +76,32 @@ class PTBModel(object):
     optmizer = tf.train.GradientDescentOptimizer(self._lr)
     self._train_op = optmizer.apply_gradients(zip(grads,tvars),
           global_step = tf.contrib.framework.get_or_creat_global_step())
+    self._new_lr = tf.placeholder(
+      tf.float32,shape=[], name="new_learning_rate"
+    )
+    self._lr_update = tf.assign(self._lr, self._new_lr)
+  def assign_lr(self, session, lr_value):
+    session.run(self._lr_update,fees_dict = {self._new_lr : lr_value})
+  @property
+  def input(self):
+    return self._input
+  @property
+  def initial_state(self):
+    return self._initial_state
+  @property
+  def cost(slef):
+    return slef._cost
+  @property
+  def final_state(self):
+    return self._final_state
+  @property
+  def lr(self):
+    return self._lr
+  @property
+  def tarin_op(self):
+    return self._train_op
+
+
 
 
 
