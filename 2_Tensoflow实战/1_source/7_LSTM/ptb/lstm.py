@@ -40,7 +40,7 @@ class PTBModel(object):
       
     with tf.device("/cpu:0"):
       embedding = tf.get_variable(
-          "embedding", [vocab_size, size], dtype=data_type())
+          "embedding", [vocab_size, size], dtype=tf.float32 )
       inputs = tf.nn.embedding_lookup(embedding, input_.input_data)
 
     if is_training and config.keep_prob < 1:
@@ -60,11 +60,11 @@ class PTBModel(object):
       loss = tf.contrib.seq2seq.sequence_loss(
         [logits],
         [tf.reshape( input_.targets,[-1])],
-        [tf.ones([self.batch_size, self.num_steps], dtype=data_type())],
+        [tf.ones([batch_size * num_steps], dtype=tf.float32)]
         )
 
       # Update the cost
-      self._cost = tf.reduce_sum(loss) /batch_size
+      self._cost = cost = tf.reduce_sum(loss) /batch_size
       self._final_state = state
 
     if not is_training:
