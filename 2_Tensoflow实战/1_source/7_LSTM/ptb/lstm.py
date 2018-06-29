@@ -89,8 +89,8 @@ class PTBModel(object):
   def initial_state(self):
     return self._initial_state
   @property
-  def cost(slef):
-    return slef._cost
+  def cost(self):
+    return self._cost
   @property
   def final_state(self):
     return self._final_state
