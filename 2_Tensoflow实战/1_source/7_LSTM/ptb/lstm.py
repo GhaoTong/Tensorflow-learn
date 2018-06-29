@@ -19,7 +19,6 @@ class PTBInput(object):
       data, batch_size, num_steps, name=name)
 class PTBModel(object):
   """The PTB model."""
-
   def __init__ (self, is_training, config, input_):
     self._input = input_
     batch_size = input_.batch_size
@@ -31,7 +30,7 @@ class PTBModel(object):
     attn_cell = lstm_cell
     if is_training and config.keep <1:
       def attn_cell():
-          return tf.contrib.rnn.DropoutWrapper(lstm_cell(),output_keep_prob=config.keep_prob)
+        return tf.contrib.rnn.DropoutWrapper(lstm_cell(),output_keep_prob=config.keep_prob)
     cell = tf.contrib.rnn.MultiRNNCell(
           [attn_cell() for _ in range(config.mun_layers)],
           state_is_tuple=True
@@ -51,8 +50,8 @@ class PTBModel(object):
     with tf.variable_scope("RNN"):
       for time_step in range( num_steps ):
         if time_step > 0 :
-             tf.get_variable_scope().reuse_variables()
-          (cell_output, state) = cell(inputs[:,time_step,:], state)
+          tf.get_variable_scope().reuse_variables()
+        (cell_output, state) = cell(inputs[:,time_step,:], state)
         outputs.append(cell_output)
       output = tf.reshape(tf.constant(outputs, 1),[-1, size])
       softmax_w = tf.get_variable("softmax_w",[size, vocab_size], dtype=tf.float32)
@@ -68,7 +67,7 @@ class PTBModel(object):
       self._cost = tf.reduce_sum(loss) /batch_size
       self._final_state = state
 
-      if not is_training:
+    if not is_training:
       return
     self._lr = tf.Variable(0.0,trainable = False)
     tvars = tf.trainable_variables()
@@ -76,7 +75,7 @@ class PTBModel(object):
     config.max_grad_norm)
     optmizer = tf.train.GradientDescentOptimizer(self._lr)
     self._train_op = optmizer.apply_gradients(zip(grads,tvars),
-          global_step= = tf.contrib.framework.get_or_creat_global_step())
+          global_step = tf.contrib.framework.get_or_creat_global_step())
 
 
 
